@@ -115,13 +115,13 @@ document.getElementById("orderForm").addEventListener("submit",function(e){
   const quantity=document.getElementById("quantity").value.trim();
   const date=document.getElementById("date").value;
   const details=document.getElementById("details").value.trim();
-  const message="Hej! Jag vill beställa från AMOURA.\\n\\n"+
-    "Namn: "+name+"\\n"+
-    "Beställning: "+product+"\\n"+
-    "Antal: "+quantity+"\\n"+
-    "Total summa: "+(Number(quantity)*180)+" kr\\n"+
+  const message="Hej! Jag vill beställa från AMOURA.\n\n"+
+    "Namn: "+name+"\n"+
+    "Beställning: "+product+"\n"+
+    "Antal: "+quantity+"\n"+
+    "Total summa: "+(Number(quantity)*180)+" kr\n"+
     "Hämtningsdatum: "+date+
-    (details ? "\\nÖnskemål: "+details : "");
+    (details ? "\nÖnskemål: "+details : "");
   window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message),"_blank","noopener");
 });
 </script>
