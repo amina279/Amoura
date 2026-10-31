@@ -80,16 +80,16 @@ footer p{font-size:11px;letter-spacing:2px}
     <label for="quantity">ANTAL UPPSÄTTNINGAR / SATSER</label>
     <select id="quantity" required>
       <option value="">Välj antal uppsättningar</option>
-      <option value="1 uppsättning/sats">1</option>
-      <option value="2 uppsättningar/satser">2</option>
-      <option value="3 uppsättningar/satser">3</option>
-      <option value="4 uppsättningar/satser">4</option>
-      <option value="5 uppsättningar/satser">5</option>
-      <option value="6 uppsättningar/satser">6</option>
-      <option value="7 uppsättningar/satser">7</option>
-      <option value="8 uppsättningar/satser">8</option>
-      <option value="9 uppsättningar/satser">9</option>
-      <option value="10 uppsättningar/satser">10</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
     </select>
     <label for="date">ÖNSKAT HÄMTDATUM</label>
     <input id="date" type="date" required>
@@ -115,11 +115,12 @@ document.getElementById("orderForm").addEventListener("submit",function(e){
   const quantity=document.getElementById("quantity").value.trim();
   const date=document.getElementById("date").value;
   const details=document.getElementById("details").value.trim();
-  const message="Hej! Jag vill beställa från AMOURA.\\n"+
+  const message="Hej! Jag vill beställa från AMOURA.\\n\\n"+
     "Namn: "+name+"\\n"+
     "Beställning: "+product+"\\n"+
     "Antal: "+quantity+"\\n"+
-    "Hämtning: "+date+
+    "Total summa: "+(Number(quantity)*180)+" kr\\n"+
+    "Hämtningsdatum: "+date+
     (details ? "\\nÖnskemål: "+details : "");
   window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message),"_blank","noopener");
 });
