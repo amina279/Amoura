@@ -29,6 +29,7 @@ h2{text-align:center;font:42px 'Playfair Display',serif;margin:0 0 12px}
 .art img{width:100%;height:100%;object-fit:cover;display:block}
 .product h3{font:25px 'Playfair Display',serif;margin:22px 10px 8px}
 .price{color:var(--gold);font-size:16px}
+.product-description{font-size:13px;line-height:1.65;color:#715d4d;margin:12px 18px 0}
 .nut-warning{margin:14px 12px 0;padding:10px 8px;background:#fff0e8;color:#8b241b;border:1px solid #d99a83;font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
 .order{background:#eee6dc}
 form{max-width:520px;margin:auto}
@@ -49,6 +50,7 @@ footer .contact-link:hover,footer .instagram-link:hover{background:#c5a477;color
 footer .social-links{display:contents}
 footer .logo{margin-top:30px}
 footer .instagram-link svg{width:24px;height:24px;display:block}
+footer .footer-brand{margin-top:38px}
 .payment-note{font-size:13px;font-weight:700;text-align:center;padding:12px 14px;margin:8px 0 16px;border:1px solid var(--gold);border-radius:8px;background:rgba(190,153,91,.10);color:var(--brown)}
 @media(max-width:600px){header{padding:18px 5%}.logo{font-size:25px}nav a{margin-left:12px;font-size:10px}section{padding:60px 6%}.art{height:270px}}
 
@@ -60,9 +62,10 @@ footer .instagram-link svg{width:24px;height:24px;display:block}
 .ingredient-modal{position:relative;background:#fbf8f3;color:var(--brown);width:min(100%,420px);max-height:85vh;overflow:auto;padding:30px 26px;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.25)}
 .ingredient-modal h2{font:32px 'Playfair Display',serif;margin:0 28px 8px}
 .ingredient-modal .subtitle{margin:0 0 18px}
+#ingredientIntro{margin:0 0 6px}
+#ingredientEnding{margin:14px 0 0;font-size:13px}
 .ingredient-modal ul{padding-left:22px;line-height:1.9;margin:0}
 .ingredient-modal ul ul{padding-left:22px}
-.ingredient-note{margin:14px 0 0;line-height:1.6}
 .ingredient-close{position:absolute;right:13px;top:9px;border:0;background:transparent;color:var(--brown);font-size:27px;cursor:pointer}
 input[type="datetime-local"]{display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box;-webkit-appearance:none;appearance:none}
 </style>
@@ -98,6 +101,14 @@ input[type="datetime-local"]{display:block;width:100%;min-width:0;max-width:100%
       <div class="price">190 kr/st</div>
       <p class="nut-warning"><strong>OBS! INNEHÅLLER PISTAGENÖTTER</strong></p>
     </article>
+    <article class="product">
+      <button class="art image-button" type="button" data-product="dubai" aria-label="Visa ingredienser för Dubai kaka mini"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiNmNWVhZGIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkZmM3YTgiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iY2FrZSIgeDI9IjAiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZDdhNjVmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOWI2MzM2Ii8+PC9saW5lYXJHcmFkaWVudD48ZmlsdGVyIGlkPSJzaGFkb3ciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEyIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2JnKSIvPjxlbGxpcHNlIGN4PSI0MDUiIGN5PSI0NzUiIHJ4PSIyNzUiIHJ5PSI0MiIgZmlsbD0iIzcyNTMzYiIgb3BhY2l0eT0iLjIiIGZpbHRlcj0idXJsKCNzaGFkb3cpIi8+PGVsbGlwc2UgY3g9IjQwMCIgY3k9IjQ1MCIgcng9IjI4MCIgcnk9Ijc1IiBmaWxsPSIjZjhmMmU5Ii8+PGVsbGlwc2UgY3g9IjQwMCIgY3k9IjQzOCIgcng9IjI1MCIgcnk9IjU1IiBmaWxsPSIjZDdjM2E5Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTU1IDE3MCkiPjxnPjxyZWN0IHg9IjAiIHk9Ijk1IiB3aWR0aD0iMTQ1IiBoZWlnaHQ9IjEyNSIgcng9IjEzIiBmaWxsPSJ1cmwoI2Nha2UpIi8+PHJlY3QgeD0iOCIgeT0iODIiIHdpZHRoPSIxMjkiIGhlaWdodD0iMzUiIHJ4PSIxMCIgZmlsbD0iI2YwZDM5YiIvPjxwYXRoIGQ9Ik0xMiA5NCBRMzUgNzUgNTggOTQgVDEwNCA5NCBUMTM2IDk0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYwYzkiIHN0cm9rZS13aWR0aD0iOSIvPjxnIGZpbGw9IiM2MzczNDQiPjxlbGxpcHNlIGN4PSI0MiIgY3k9IjgyIiByeD0iOSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0yNSA0MiA4MikiLz48ZWxsaXBzZSBjeD0iNzgiIGN5PSI4OCIgcng9IjkiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgyMCA3OCA4OCkiLz48ZWxsaXBzZSBjeD0iMTA5IiBjeT0iODAiIHJ4PSI5IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyIDEwOSA4MCkiLz48L2c+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2NSAtMTUpIj48cmVjdCB4PSIwIiB5PSIxMTAiIHdpZHRoPSIxNDUiIGhlaWdodD0iMTI1IiByeD0iMTMiIGZpbGw9InVybCgjY2FrZSkiLz48cmVjdCB4PSI4IiB5PSI5NyIgd2lkdGg9IjEyOSIgaGVpZ2h0PSIzNSIgcng9IjEwIiBmaWxsPSIjZjBkMzliIi8+PHBhdGggZD0iTTEyIDEwOSBRMzUgOTAgNTggMTA5IFQxMDQgMTA5IFQxMzYgMTA5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYwYzkiIHN0cm9rZS13aWR0aD0iOSIvPjxnIGZpbGw9IiM2MzczNDQiPjxlbGxpcHNlIGN4PSI0MiIgY3k9Ijk3IiByeD0iOSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0yNSA0MiA5NykiLz48ZWxsaXBzZSBjeD0iNzgiIGN5PSIxMDMiIHJ4PSI5IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMjAgNzggMTAzKSIvPjxlbGxpcHNlIGN4PSIxMDkiIGN5PSI5NSIgcng9IjkiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTIgMTA5IDk1KSIvPjwvZz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzM1IDQ1KSI+PHJlY3QgeD0iMCIgeT0iMTAwIiB3aWR0aD0iMTQ1IiBoZWlnaHQ9IjEyNSIgcng9IjEzIiBmaWxsPSJ1cmwoI2Nha2UpIi8+PHJlY3QgeD0iOCIgeT0iODciIHdpZHRoPSIxMjkiIGhlaWdodD0iMzUiIHJ4PSIxMCIgZmlsbD0iI2YwZDM5YiIvPjxwYXRoIGQ9Ik0xMiA5OSBRMzUgODAgNTggOTkgVDEwNCA5OSBUMTM2IDk5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYwYzkiIHN0cm9rZS13aWR0aD0iOSIvPjxnIGZpbGw9IiM2MzczNDQiPjxlbGxpcHNlIGN4PSI0MiIgY3k9Ijg3IiByeD0iOSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0yNSA0MiA4NykiLz48ZWxsaXBzZSBjeD0iNzgiIGN5PSI5MyIgcng9IjkiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgyMCA3OCA5MykiLz48ZWxsaXBzZSBjeD0iMTA5IiBjeT0iODUiIHJ4PSI5IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyIDEwOSA4NSkiLz48L2c+PC9nPjwvZz48dGV4dCB4PSI0MDAiIHk9IjU0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGxldHRlci1zcGFjaW5nPSI1IiBmaWxsPSIjNmM0YjMyIj5EVUJBSSBNSU5JPC90ZXh0Pjwvc3ZnPg==" alt="Dubai kaka mini med pistagetopping"></button>
+      <p class="image-hint">Tryck på bilden för att se ingredienser</p>
+      <h3>Dubai kaka (mini)</h3>
+      <div class="price">60 kr/låda</div>
+      <p class="product-description">En låda innehåller cirka 30 mini-kakor. Varje kaka är liten, ungefär 1–2 tuggor per bit.</p>
+      <p class="nut-warning"><strong>OBS! INNEHÅLLER PISTAGENÖTTER</strong></p>
+    </article>
   </div>
 </section>
 
@@ -107,10 +118,11 @@ input[type="datetime-local"]{display:block;width:100%;min-width:0;max-width:100%
   <form id="orderForm">
     <label for="customer">DITT NAMN</label>
     <input id="customer" required placeholder="För- och efternamn">
-    <label>VAD VILL DU BESTÄLLA? (DU KAN VÄLJA BÅDA)</label>
+    <label>VAD VILL DU BESTÄLLA? (DU KAN VÄLJA FLERA)</label>
     <div class="choice-group">
       <label class="choice-card"><input id="chooseHalawet" type="checkbox"><span>Halawet el jibn – 265 kr/kg</span></label>
       <label class="choice-card"><input id="chooseKnafeh" type="checkbox"><span>Knafeh/Knuafa – 190 kr/styck</span></label>
+      <label class="choice-card"><input id="chooseDubai" type="checkbox"><span>Dubai kaka (mini) – 60 kr/låda (cirka 30 mini-kakor)</span></label>
     </div>
     <div class="quantity-panel" id="halawetQuantityPanel" hidden>
       <label for="halawetQuantity">ANTAL KG HALAWET EL JIBN</label>
@@ -126,6 +138,14 @@ input[type="datetime-local"]{display:block;width:100%;min-width:0;max-width:100%
         <option value="">Välj antal stycken</option>
         <option value="1">1 styck</option><option value="2">2 stycken</option><option value="3">3 stycken</option><option value="4">4 stycken</option><option value="5">5 stycken</option>
         <option value="6">6 stycken</option><option value="7">7 stycken</option><option value="8">8 stycken</option><option value="9">9 stycken</option><option value="10">10 stycken</option>
+      </select>
+    </div>
+    <div class="quantity-panel" id="dubaiQuantityPanel" hidden>
+      <label for="dubaiQuantity">ANTAL LÅDOR DUBAI KAKA (MINI)</label>
+      <select id="dubaiQuantity">
+        <option value="">Välj antal lådor</option>
+        <option value="1">1 låda</option><option value="2">2 lådor</option><option value="3">3 lådor</option><option value="4">4 lådor</option><option value="5">5 lådor</option>
+        <option value="6">6 lådor</option><option value="7">7 lådor</option><option value="8">8 lådor</option><option value="9">9 lådor</option><option value="10">10 lådor</option>
       </select>
     </div>
     <label for="date">ÖNSKAD UPPHÄMTNING (TIDIGAST 48 TIMMAR EFTER BESTÄLLNING)</label>
@@ -144,9 +164,9 @@ input[type="datetime-local"]{display:block;width:100%;min-width:0;max-width:100%
     <button class="ingredient-close" id="ingredientClose" type="button" aria-label="Stäng">×</button>
     <h2 id="ingredientTitle">Ingredienser</h2>
     <p class="subtitle" id="ingredientProduct"></p>
-    <p id="ingredientIntro">Innehåller bland annat:</p>
+    <p id="ingredientIntro">Innehåller bland annat</p>
     <ul id="ingredientList"></ul>
-    <p id="ingredientNote" class="ingredient-note"></p>
+    <p id="ingredientEnding">Kontakta vid funderingar om allergier</p>
   </div>
 </div>
 
@@ -164,8 +184,7 @@ input[type="datetime-local"]{display:block;width:100%;min-width:0;max-width:100%
       INSTAGRAM
     </a>
   </div>
-  <p>@AMOURA.NKP</p>
-  <div class="logo">AMOURA</div>
+  <div class="logo footer-brand">AMOURA</div>
   <p>MADE WITH LOVE · BAKED WITH PASSION</p>
   <p>© AMOURA</p>
 </footer>
@@ -175,39 +194,29 @@ const whatsappNumber = "46704185075";
 
 // Ingredient lists are shown when the customer taps a product image.
 const ingredientData = {
-  halawet: { name: "Halawet el jibn", items: ["Mjölkprodukter", "Mannagryn", "Mozzarella"], note: "Kontakta vid funderingar om allergier" },
-  knafeh: { name: "Knafeh/Knuafa", items: ["Kadayifdeg", "Smör", "Mozzarella"], note: "Kontakta vid funderingar om allergier" }
+  halawet: { name: "Halawet el jibn", intro: "Innehåller bland annat", items: ["Mjölkprodukter", "Mannagryn", "Mozzarella"], ending: "Kontakta vid funderingar om allergier" },
+  knafeh: { name: "Knafeh/Knuafa", intro: "Innehåller bland annat", items: ["Kadayifdeg", "Smör", "Mozzarella"], ending: "Kontakta vid funderingar om allergier" },
+  dubai: { name: "Dubai kaka (mini)", intro: "Innehåller bland annat", items: ["Katayef", "Pistage", "Smör", "Mjöl"], ending: "Kontakta vid funderingar om allergier" }
 };
 const overlay = document.getElementById("ingredientOverlay");
 const ingredientProduct = document.getElementById("ingredientProduct");
 const ingredientList = document.getElementById("ingredientList");
-const ingredientNote = document.getElementById("ingredientNote");
 const closeButton = document.getElementById("ingredientClose");
 let lastTrigger = null;
-function appendIngredients(parent, items) {
-  items.forEach(item => {
-    const li = document.createElement("li");
-    if (typeof item === "string") li.textContent = item;
-    else {
-      li.textContent = item.name;
-      const nested = document.createElement("ul");
-      appendIngredients(nested, item.children);
-      li.appendChild(nested);
-    }
-    parent.appendChild(li);
-  });
-}
 document.querySelectorAll(".image-button").forEach(button => {
   button.addEventListener("click", () => {
     const data = ingredientData[button.dataset.product];
     if (!data) return;
     lastTrigger = button;
     ingredientProduct.textContent = data.name;
+    document.getElementById("ingredientIntro").textContent = data.intro;
+    document.getElementById("ingredientEnding").textContent = data.ending;
     ingredientList.replaceChildren();
-    appendIngredients(ingredientList, data.items);
-    // Keep the allergy contact message as a separate sentence, not a list item.
-    ingredientNote.textContent = data.note;
-    document.getElementById("ingredientIntro").hidden = button.dataset.product !== "halawet";
+    data.items.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      ingredientList.appendChild(li);
+    });
     overlay.classList.add("open");
     closeButton.focus();
   });
@@ -232,24 +241,31 @@ dateInput.addEventListener("focus", refreshPickupMinimum);
 
 const chooseHalawet = document.getElementById("chooseHalawet");
 const chooseKnafeh = document.getElementById("chooseKnafeh");
+const chooseDubai = document.getElementById("chooseDubai");
 const halawetQuantity = document.getElementById("halawetQuantity");
 const knafehQuantity = document.getElementById("knafehQuantity");
+const dubaiQuantity = document.getElementById("dubaiQuantity");
 const halawetPanel = document.getElementById("halawetQuantityPanel");
 const knafehPanel = document.getElementById("knafehQuantityPanel");
+const dubaiPanel = document.getElementById("dubaiQuantityPanel");
 function updateProductChoices() {
   halawetPanel.hidden = !chooseHalawet.checked;
   knafehPanel.hidden = !chooseKnafeh.checked;
+  dubaiPanel.hidden = !chooseDubai.checked;
   halawetQuantity.required = chooseHalawet.checked;
   knafehQuantity.required = chooseKnafeh.checked;
+  dubaiQuantity.required = chooseDubai.checked;
   if (!chooseHalawet.checked) halawetQuantity.value = "";
   if (!chooseKnafeh.checked) knafehQuantity.value = "";
+  if (!chooseDubai.checked) dubaiQuantity.value = "";
 }
 chooseHalawet.addEventListener("change", updateProductChoices);
 chooseKnafeh.addEventListener("change", updateProductChoices);
+chooseDubai.addEventListener("change", updateProductChoices);
 
 document.getElementById("orderForm").addEventListener("submit", function(e) {
   e.preventDefault();
-  if (!chooseHalawet.checked && !chooseKnafeh.checked) {
+  if (!chooseHalawet.checked && !chooseKnafeh.checked && !chooseDubai.checked) {
     alert("Välj minst ett bakverk att beställa.");
     chooseHalawet.focus();
     return;
@@ -262,6 +278,11 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   if (chooseKnafeh.checked && !knafehQuantity.value) {
     alert("Välj antal Knafeh/Knuafa.");
     knafehQuantity.focus();
+    return;
+  }
+  if (chooseDubai.checked && !dubaiQuantity.value) {
+    alert("Välj antal lådor Dubai kaka (mini).");
+    dubaiQuantity.focus();
     return;
   }
   const minimum = earliestPickup();
@@ -288,6 +309,12 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
     const subtotal = qty * 190;
     total += subtotal;
     orderLines.push("Knafeh/Knuafa: " + qty + " st × 190 kr = " + subtotal + " kr");
+  }
+  if (chooseDubai.checked) {
+    const qty = Number(dubaiQuantity.value);
+    const subtotal = qty * 60;
+    total += subtotal;
+    orderLines.push("Dubai kaka (mini): " + qty + " lådor × 60 kr = " + subtotal + " kr (cirka 30 mini-kakor per låda)");
   }
   const message = "Hej! Jag vill beställa från AMOURA.\n\n" +
     "Namn: " + name + "\n" +
