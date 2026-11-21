@@ -291,13 +291,13 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
     return;
   }
   if (chooseBasbosa.checked && !basbosaQuantity.value) {
-    alert("Välj antal kg Basbosa.");
+    alert("Välj antal kg Basbosa med kokos.");
     basbosaQuantity.focus();
     return;
   }
-  const minimum = earliestPickup();
-  refreshPickupMinimum();
+  const dateInput = document.getElementById("date");
   const pickup = new Date(dateInput.value);
+  const minimum = new Date(Date.now() + 48 * 60 * 60 * 1000);
   if (!dateInput.value || Number.isNaN(pickup.getTime()) || pickup.getTime() < minimum.getTime()) {
     alert("Upphämtning kan tidigast bokas 48 timmar efter beställningen. Välj en senare tid.");
     dateInput.focus();
@@ -308,23 +308,27 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   const pickupText = pickup.toLocaleString("sv-SE", { dateStyle: "short", timeStyle: "short" });
   let total = 0;
   const orderLines = [];
+  const orderItems = [];
   if (chooseHalawet.checked) {
     const qty = Number(halawetQuantity.value);
     const subtotal = qty * 269;
     total += subtotal;
     orderLines.push("Halawet el jibn: " + qty + " kg × 269 kr = " + subtotal + " kr");
+    orderItems.push({ name: "Halawet el jibn", quantity: String(qty) + " kg", price: 269, lineTotal: subtotal });
   }
   if (chooseKnafeh.checked) {
     const qty = Number(knafehQuantity.value);
     const subtotal = qty * 219;
     total += subtotal;
     orderLines.push("Knafeh/Knuafa: " + qty + (qty === 1 ? " styck" : " stycken") + " × 219 kr = " + subtotal + " kr");
+    orderItems.push({ name: "Knafeh/Knuafa", quantity: String(qty) + (qty === 1 ? " st" : " st"), price: 219, lineTotal: subtotal });
   }
   if (chooseBasbosa.checked) {
     const qty = Number(basbosaQuantity.value);
     const subtotal = qty * 189;
     total += subtotal;
     orderLines.push("Basbosa med kokos: " + qty + " kg × 189 kr = " + subtotal + " kr");
+    orderItems.push({ name: "Basbosa med kokos", quantity: String(qty) + " kg", price: 189, lineTotal: subtotal });
   }
   const message = "Hej! Jag vill beställa från AMOURA.\n\n" +
     "Namn: " + name + "\n" +
@@ -332,6 +336,20 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
     "Total summa: " + total + " kr\n" +
     "Upphämtning: " + pickupText +
     (details ? "\nÖvriga önskemål: " + details : "");
+  // Save order to AMOURA dashboard; WhatsApp remains the customer-facing confirmation.
+  fetch("https://amoura.floot.app/_api/orders_public_create", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      customerName: name,
+      items: orderItems,
+      totalAmount: total,
+      pickupAt: pickup.toISOString(),
+      notes: details
+    })
+  }).catch(function(error) {
+    console.error("AMOURA dashboard order save failed:", error);
+  });
   window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message), "_blank", "noopener");
 });
 </script>
